@@ -20,6 +20,10 @@ const emailCheck = body("email").custom((email) => {
   });
 });
 
+const sexCheck = body("sex").isLength({ min: 1 });
+
+const passwordCheck = body("password").isLength({ min: 6 });
+
 // check for username not to be taken
 const usernameCheck = body("username")
   .isLength({ min: 3 })
@@ -43,7 +47,6 @@ const usersFriendIdCheck = body("friendId")
 // check new post requirements
 const newPostHeadingCheck = body("heading").isLength({ min: 3 });
 const newPostTextCheck = body("text").isLength({ min: 20 });
-const newPostDateCheck = body("date").isDate();
 
 //
 const newCommentPostIdCheck = body("text").isLength({ min: 20 });
@@ -68,10 +71,11 @@ module.exports = {
   emailFilter,
   emailCheck,
   usernameCheck,
+  sexCheck,
+  passwordCheck,
   usersFriendIdCheck,
   newPostHeadingCheck,
   newPostTextCheck,
-  newPostDateCheck,
   newCommentPostIdCheck,
   newCommentTextCheck,
   checkAuth,

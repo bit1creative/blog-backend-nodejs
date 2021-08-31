@@ -37,6 +37,10 @@ router.get("/:id", checkAuth, (req, res) => {
 
 async function NewComment(req, res) {
   const userID = await req.user.then((user) => user._id);
+  const post = await Post.findById(req.body.postId);
+
+  if (!post) return res.status(400).json({ error: "Post cannot be found." });
+
   let comment = new Comment({
     authorId: userID.toString(),
     postId: req.body.postId,

@@ -16,6 +16,8 @@ const {
   emailFilter,
   emailCheck,
   usernameCheck,
+  sexCheck,
+  passwordCheck,
   usersFriendIdCheck,
   checkAuth,
   checkNotAuth,
@@ -40,17 +42,21 @@ router.post(
   emailFilter,
   emailCheck,
   usernameCheck,
+  sexCheck,
+  passwordCheck,
   body("picUrl").isURL(),
 
-  async (req, res) => {
-    await SafeRun(req, res, Register);
+  (req, res) => {
+    SafeRun(req, res, Register);
   }
 );
 
 // just a plug (in dev redirection to login page)
 router.get("/login", checkNotAuth, (req, res) => {
-  // last error
-  res.send(req.session?.flash?.error.pop() ?? "Login page.");
+  // error display in dev
+  // res.render("Login page.", { messages: req.flash("error") });
+  // im using a plug
+  res.send("Login page.");
 });
 
 // logging

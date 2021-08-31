@@ -8,7 +8,6 @@ const Comment = require("../models/comment");
 const {
   newPostHeadingCheck,
   newPostTextCheck,
-  newPostDateCheck,
   checkAuth,
 } = require("../middleware");
 
@@ -20,7 +19,6 @@ router.post(
   checkAuth,
   newPostHeadingCheck,
   newPostTextCheck,
-  newPostDateCheck,
   (req, res) => {
     SafeRun(req, res, NewPost);
   }
