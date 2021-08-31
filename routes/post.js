@@ -78,8 +78,8 @@ async function EditPost(req, res) {
 
   await Post.findByIdAndUpdate(post.id, {
     $set: {
-      text: req.body.text ?? post.text,
-      heading: req.body.heading ?? post.heading,
+      text: req.body?.text ?? post.text,
+      heading: req.body?.heading ?? post.heading,
       date: Date(),
     },
   });

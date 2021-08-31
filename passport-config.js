@@ -40,13 +40,13 @@ function initialize(passport) {
 }
 
 // find user by email
-const findUserByEmail = async (email) => {
-  return await User.findOne({ email });
+const findUserByEmail = (email) => {
+  return User.findOne({ email });
 };
 
 // find user by id
-const findUserById = async (id) => {
-  return await User.findOne({ _id: id });
+const findUserById = (id) => {
+  return User.findOne({ _id: id });
 };
 
 module.exports = initialize;
